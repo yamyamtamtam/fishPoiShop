@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -35,6 +35,12 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
+                <a href="{{ route('product-list') }}">
+                    {{ __('商品一覧') }}
+                </a>
+                <a href="{{ route('product-create') }}">
+                    {{ __('商品登録') }}
+                </a>
             </div>
         </header>
         <main>

@@ -15,14 +15,6 @@
                     @endif
 
                     {{ __('管理者ログイン中です。') }}
-                    <nav>
-                        <a href="{{ url('/admin/produst/list/') }}">
-                            {{ __('商品一覧') }}
-                        </a>
-                        <a href="{{ url('/admin/produst/create/') }}">
-                            {{ __('商品登録') }}
-                        </a>
-                    </nav>
                 </div>
             </div>
         </div>

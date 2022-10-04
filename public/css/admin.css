@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+/* CSS Document */
+/********************************************************/
+/******** 共通（body,inner,pタグ,imgタグの基本設定） ********/
+/*******************************************************/
+body {
+    font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Quicksand, '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, , sans-serif;
+}
+
+body p {
+    word-break: break-all;
+}
+
+body img {}
+
+.inner {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** ヘッダー ******/
+/**********************/
+.headLineAdminMain {
+    font-size: 24px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #000;
+}
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** フッター ******/
+/**********************/
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** パーツ類 *******/
+/**********************/
+/*タイトル・見出し系（h2,h3,h4）*/
+
+@media only screen and (max-width:768px) {}
+
+/***テキスト***/
+
+@media only screen and (max-width:768px) {}
+
+/***画像・動画***/
+
+@media only screen and (max-width:768px) {}
+
+/***ボタン***/
+
+@media only screen and (max-width:768px) {}
+
+/***キャプション、コピー等***/
+
+@media only screen and (max-width:768px) {}
+
+/***リスト系***/
+
+@media only screen and (max-width:768px) {}
+
+/***囲い系***/
+
+@media only screen and (max-width:768px) {}
+
+/***テーブル***/
+
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** TOPページ *****/
+/**********************/
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** 中ページ ****/
+/**********************/
+/* 共通（中ページ共通パーツ） */
+.cardAdmin {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 20px;
+    margin: 0 0 20px;
+    border: 1px solid #000;
+}
+
+.cardAdmin__image {
+    width: 20%;
+}
+
+.cardAdmin__image img {
+    width: 100%;
+}

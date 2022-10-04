@@ -1,23 +1,8 @@
 @extends('layouts.adminbase')
 
 @section('content')
-@if(session('store'))
-    <p class="messageStatus">{{ session('store') }}を登録しました。</p>
-@endif
-@if(session('edit'))
-    <p class="messageStatus">{{ session('edit') }}の内容を変更しました。</p>
-@endif
-@if(session('delete'))
-    <p class="messageStatus">{{ session('delete') }}をゴミ箱に入れました。</p>
-@endif
-@if(session('return'))
-    <p class="messageStatus">{{ session('delete') }}をゴミ箱から元に戻しました。</p>
-@endif
 <section>
-    <h2 class="headLineAdminMain">{{ __('商品一覧') }}</h2>
-    <a href="{{ route('product-trash') }}">
-        {{ __('ごみ箱') }}
-    </a>
+    <h2 class="headLineAdminMain">{{ __('ゴミ箱に入っている商品一覧') }}</h2>
     @if (count($products) > 0)
         @foreach($products as $product)
             <article class="cardAdmin" id="product{{ $product->id }}">
@@ -48,11 +33,16 @@
                     <h4>{{ __('商品説明') }}</h4>
                     <p>{{ $product->description }}</p>
                 </div>  
-                <a href="{{ route('product-edit-view') . '/' . $product->id }}">{{ __('編集') }}</a>  
-                <a href="#" onclick="deleteConfirm('{{ $product->name }}','{{ $product->id }}')">
-                    {{ __('削除') }}
+                <a href="#" onclick="deleteReturn('{{ $product->id }}')">
+                    {{ __('元に戻す') }}
                 </a>
-                <form id="delete-form{{ $product->id }}" action="{{ route('product-delete') . '/' . $product->id }}" method="POST">
+                <form id="return-form{{ $product->id }}" action="{{ route('product-delete-return') . '/' . $product->id }}" method="POST">
+                    @csrf
+                </form>
+                <a href="#" onclick="deleteConfirm('{{ $product->id }}')">
+                    {{ __('完全に削除') }}
+                </a>
+                <form id="delete-form{{ $product->id }}" action="{{ route('product-delete-complete') . '/' . $product->id }}" method="POST">
                     @csrf
                 </form>
             </article>
@@ -61,13 +51,11 @@
 
 </section>
 <script>
-const deleteConfirm = (name,id) => {
-   const result = window.confirm(name + 'を削除してもよろしいですか？');
-   if(result){
-        document.getElementById('delete-form' + id).submit();
-   }else{
-        return;
-   }
+const deleteReturn = (id) => {
+    document.getElementById('return-form' + id).submit();
+}
+const deleteConfirm = (id) => {
+    document.getElementById('delete-form' + id).submit();
 }
 </script>
 @endsection
