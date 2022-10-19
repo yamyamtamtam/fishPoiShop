@@ -14,7 +14,7 @@ class ProductController extends Controller
     private $varidator = [
         'name' => 'required|max:128',
         'price' => 'required|max:10',
-        'image' => 'image|file|mimes:jpeg,jpg,png|max:2048',
+        'image' => 'image|mimes:jpeg,jpg,png|max:2048',
         'description' => 'required'
     ];
 
@@ -26,7 +26,7 @@ class ProductController extends Controller
     /**
      * 商品登録画面
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('admin.product.create', ['authgroup' => 'admin']);
     }
@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function confirm(Request $request)
     {
-        $validated = $request->validate($this->varidator);
+        $request->validate($this->varidator);
         $file = $request->file('image');
         if (isset($file)) {
             $tempPath = $file->store('public/uploads/temp');
@@ -95,7 +95,17 @@ class ProductController extends Controller
      */
     public function edit(Request $request)
     {
-        $validated = $request->validate($this->varidator);
+        $request->validate($this->varidator);
+        $file = $request->file('image');
+        if (isset($file)) {
+            $filePath = $file->store('public/uploads');
+            $renamePath = date('Ymd') . str_replace('public/uploads/', '', $filePath);
+            $request->filename = $renamePath;
+            Storage::move($filePath, 'public/uploads/' . $renamePath);
+        } else {
+            $request->filename = 'noimage.jpg';
+        }
+        $input = $request->all();
         $this->product->updateProduct($request);
         return redirect()->route('product-list')->with('edit', $request->name);
     }
@@ -121,7 +131,7 @@ class ProductController extends Controller
     /**
      * 商品元に戻す
      */
-    public function deleteReturn(Request $request)
+    protected function deleteReturn(Request $request)
     {
         $this->product->delelteProductReturn($request);
         return redirect()->route('product-list')->with('return', $request->name);
@@ -130,7 +140,7 @@ class ProductController extends Controller
     /**
      * 商品完全に削除
      */
-    public function deleteComplete(Request $request)
+    protected function deleteComplete(Request $request)
     {
         $this->product->delelteProductComplete($request);
         return redirect()->route('product-trash')->with('delete', $request->name);

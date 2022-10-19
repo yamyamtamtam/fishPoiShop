@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+/* CSS Document */
+/********************************************************/
+/******** 共通（body,inner,pタグ,imgタグの基本設定） ********/
+/*******************************************************/
+body {
+    font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Quicksand, '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, , sans-serif;
+}
+
+body p {
+    word-break: break-all;
+}
+
+body img {
+    max-width: 100%;
+}
+
+.inner {
+    display: block;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** ヘッダー ******/
+/**********************/
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** フッター ******/
+/**********************/
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** パーツ類 *******/
+/**********************/
+/*タイトル・見出し系（h2,h3,h4）*/
+
+@media only screen and (max-width:768px) {}
+
+/***テキスト***/
+
+@media only screen and (max-width:768px) {}
+
+/***画像・動画***/
+
+@media only screen and (max-width:768px) {}
+
+/***ボタン***/
+
+@media only screen and (max-width:768px) {}
+
+/***キャプション、コピー等***/
+
+@media only screen and (max-width:768px) {}
+
+/***リスト系***/
+
+@media only screen and (max-width:768px) {}
+
+/***囲い系***/
+
+@media only screen and (max-width:768px) {}
+
+/***テーブル***/
+
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** TOPページ *****/
+/**********************/
+.productsWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.productCard {
+    position: relative;
+    width: 280px;
+    margin: 0 20px 20px 0;
+    padding: 20px 20px 50px;
+    border: 1px solid #EEE;
+    box-sizing: border-box;
+}
+
+.product__button {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    margin: auto;
+    width: 80%;
+    padding: 5px 15px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+/* SP */
+@media only screen and (max-width:768px) {}
+
+/**********************/
+/****** 中ページ ****/
+/**********************/
+/* 共通（中ページ共通パーツ） */

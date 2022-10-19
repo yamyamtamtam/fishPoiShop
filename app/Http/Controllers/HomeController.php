@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $product;
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->product = new Product;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $auth = Auth::user();
+        $products = $this->product->where('del_flg', 0)->get();
+        $cart = $request->session()->get('cart');
+        if (isset($cart)) {
+            $cartCount = count($cart);
+        } else {
+            $cartCount = 0;
+        }
+        return view('home', ['auth' => $auth, 'products' => $products, 'cartCount' => $cartCount]);
     }
 }

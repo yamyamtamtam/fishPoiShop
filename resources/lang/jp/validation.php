@@ -43,7 +43,7 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => '正しい:attributeを指定してください。',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
@@ -61,7 +61,7 @@ return [
         'string' => 'The :attribute must be greater than or equal to :value characters.',
         'array' => 'The :attribute must have :value items or more.',
     ],
-    'image' => 'The :attribute must be an image.',
+    'image' => '「:attribute」には画像をアップロードしてください。',
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field does not exist in :other.',
     'integer' => 'The :attribute must be an integer.',
@@ -84,12 +84,12 @@ return [
     'mac_address' => 'The :attribute must be a valid MAC address.',
     'max' => [
         'numeric' => '「:attribute」は:max桁以下で入力してください。',
-        'file' => 'The :attribute must not be greater than :max kilobytes.',
+        'file' => '「:attribute」は2MB以下のものにしてください。',
         'string' => '「:attribute」は:max文字以下で入力してください。',
         'array' => 'The :attribute must not have more than :max items.',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values.',
-    'mimetypes' => 'The :attribute must be a file of type: :values.',
+    'mimes' => '「:attribute」には拡張子:valuesのみアップロードできます。',
+    'mimetypes' => '「:attribute」には拡張子:valuesのみアップロードできます。',
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
@@ -165,7 +165,11 @@ return [
         'code' => '商品コード',
         'cat' => 'カテゴリー',
         'image' => '画像',
-        'description' => '商品説明'
+        'deliveryName' => 'お届け先名',
+        'deliveryPostal' => 'お届け先郵便番号',
+        'deliveryAddress' => 'お届け先住所',
+        'deliveryTel' => '電話番号',
+        'deliveryMail' => 'メールアドレス'
     ],
 
 ];

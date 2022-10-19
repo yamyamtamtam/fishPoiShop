@@ -45,7 +45,7 @@ class Product extends Model
             'price' => $request->price,
             'sale' => $request->sale,
             'code' => $request->code,
-            'image' => $request->image,
+            'image' => $request->filename,
             'description' => $request->description
         ]);
     }

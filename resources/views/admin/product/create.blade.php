@@ -45,7 +45,13 @@
         -->
         <dl class="formItem">
             <dt><label for="image">{{ __('画像') }}</label></dt>
-            <dd><input type="file" class="formFile" name="image"></dd>
+            <dd><input type="file" class="formFile" name="image">
+                @if ($errors->has('image'))
+                @foreach($errors->get('image') as $message)
+                    <span class="formItem__error">{{ $message }}</span>
+                @endforeach
+                @endif
+            </dd>
         </dl>
         <dl class="formItem">
             <dt><label for="description">{{ __('商品説明') }}</label><span class="required">{{ __('必須') }}</span></dt>
@@ -55,7 +61,7 @@
                 @foreach($errors->get('description') as $message)
                     <span class="formItem__error">{{ $message }}</span>
                 @endforeach
-            @endif
+                @endif
             </dd>
         </dl>
         <button type="submit" class="button button--submit">

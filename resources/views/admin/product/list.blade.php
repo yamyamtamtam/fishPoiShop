@@ -52,7 +52,7 @@
                 <a href="#" onclick="deleteConfirm('{{ $product->name }}','{{ $product->id }}')">
                     {{ __('削除') }}
                 </a>
-                <form id="delete-form{{ $product->id }}" action="{{ route('product-delete') . '/' . $product->id }}" method="POST">
+                <form id="deleteForm{{ $product->id }}" action="{{ route('product-delete') . '/' . $product->id }}" method="POST">
                     @csrf
                 </form>
             </article>
@@ -64,7 +64,7 @@
 const deleteConfirm = (name,id) => {
    const result = window.confirm(name + 'を削除してもよろしいですか？');
    if(result){
-        document.getElementById('delete-form' + id).submit();
+        document.getElementById('deleteForm' + id).submit();
    }else{
         return;
    }

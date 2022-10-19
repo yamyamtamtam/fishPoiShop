@@ -3,7 +3,7 @@
 @section('content')
 <section>
     <h2 class="headLineAdminMain">商品を編集</h2>
-    <form action="{{ route('product-edit') . '/' . $product->id }}" method="POST">
+    <form action="{{ route('product-edit') . '/' . $product->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value="{{ $product->id }}">
         <dl class="formItem">
@@ -44,7 +44,15 @@
         -->
         <dl class="formItem">
             <dt><label for="image">{{ __('画像') }}</label></dt>
-            <dd><input type="text" class="formText" name="image" value="@if(old('image')){{ old('image') }}@else{{ $product->image }}@endif"></dd>
+            <dd><input type="file" class="formText" name="image">
+                @if ($errors->has('image'))
+                @foreach($errors->get('image') as $message)
+                    <span class="formItem__error">{{ $message }}</span>
+                @endforeach
+                @endif
+                <p class="">現在の画像</p>
+                <img src="{{ asset('/storage/uploads/' . $product->image) }}" alt="">
+            </dd>
         </dl>
         <dl class="formItem">
             <dt><label for="productDescription">{{ __('商品説明') }}</label></dt>

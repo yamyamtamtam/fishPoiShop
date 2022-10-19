@@ -18,21 +18,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
-    <div id="app">
         <header class="header">
-            @isset($authgroup)
-            <h1 class="header__siteTitle"><a href="{{ url('/admin') }}">
-                    {{ __('Laravel練習用ECサイト管理画面') }}
-                </a></h1>
-            @else
             <h1 class="header__siteTitle"><a href="{{ url('/') }}">
                 {{ config('app.name') }}
             </a></h1>
-            @endisset
             <div class="header__utility">
                 @guest
                     @if(!Auth::check() && (!isset($authgroup) || !Auth::guard($authgroup)->check()))
@@ -52,10 +46,10 @@
                         @endif
                     @endif
                 @else
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
                         {{ __('ログアウト') }}
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    <form id="logoutForm" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
                 @endguest
@@ -68,7 +62,6 @@
             <a href="https://yamyamtamtam.tech" target="_blank">My blog.</a>
             <h6>yamyamtamtam.</h6>
         </footer>
-    </div>
 </body>
 
 </html>
