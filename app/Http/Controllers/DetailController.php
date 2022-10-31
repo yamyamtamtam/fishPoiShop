@@ -18,7 +18,7 @@ class DetailController extends Controller
     public function view(Int $id, Request $request)
     {
         $auth = Auth::user();
-        $recommends = $this->product->where('del_flg', 0)->orderBy('id', 'DESC')->take(10)->get();
+        $recommends = $this->product->where('del_flg', 0)->orderBy('id', 'DESC')->take(6)->get();
         $content = $this->product->where('del_flg', 0)->find($id);
         $cart = $request->session()->get('cart');
         if (isset($cart)) {

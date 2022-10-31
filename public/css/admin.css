@@ -6,19 +6,30 @@
 /*******************************************************/
 body {
     font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Quicksand, '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, , sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: #444;
 }
+
 
 body p {
     word-break: break-all;
 }
 
-body img {}
+body img {
+    max-width: 100%;
+}
 
 .inner {
     display: block;
-    width: 100%;
+    width: 95%;
     max-width: 1280px;
     margin: 0 auto;
+}
+
+.bgAdmin {
+    background: #FFF;
 }
 
 /* SP */
@@ -27,10 +38,51 @@ body img {}
 /**********************/
 /****** ヘッダー ******/
 /**********************/
-.headLineAdminMain {
-    font-size: 24px;
-    padding: 0 0 10px;
-    border-bottom: 1px solid #000;
+.header {
+    position: relative;
+    width: 100%;
+    background: #CCC;
+    padding: 30px 0 20px;
+}
+
+.header__utility {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: #FFF;
+}
+
+.header__utility a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    color: #09428c;
+    text-decoration: none;
+    margin: 0 30px 0 0;
+    font-weight: bold;
+}
+
+.header__utility a:after {
+    content: '>';
+    font-size: 12px;
+    padding: 0 0 0 10px;
+}
+
+.header__siteTitle {
+    text-align: center;
+    margin: 0 0 30px;
+}
+
+.header__siteTitle a {
+    color: #444;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* SP */
@@ -39,6 +91,18 @@ body img {}
 /**********************/
 /****** フッター ******/
 /**********************/
+.footer {
+    text-align: center;
+    margin: 40px 0 0;
+}
+
+.footer__copy {
+    margin: 20px 0 30px;
+    font-weight: normal;
+    color: #444;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
 
 /* SP */
 @media only screen and (max-width:768px) {}
@@ -47,10 +111,56 @@ body img {}
 /****** パーツ類 *******/
 /**********************/
 /*タイトル・見出し系（h2,h3,h4）*/
+.headlineUnderline {
+    font-size: 26px;
+    font-weight: bold;
+    color: #09428c;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #09428c;
+}
+
+.headlineDoubleBorder {
+    padding: 10px 0;
+    font-size: 21px;
+    font-weight: bold;
+    color: #444;
+    text-align: center;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+.headlineBar {
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF;
+    background: #444;
+    text-align: center;
+}
 
 @media only screen and (max-width:768px) {}
 
 /***テキスト***/
+.caption {
+    color: #444;
+    font-size: 16px;
+}
+
+.textLink {
+    display: inline-block;
+    color: #09428c;
+    text-decoration: underline;
+}
+
+.messageStatus {
+    color: #B00;
+    margin: 20px 0 0;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background: rgba(255, 255, 0, 0.4);
+}
 
 @media only screen and (max-width:768px) {}
 
@@ -60,7 +170,92 @@ body img {}
 
 /***ボタン***/
 
-@media only screen and (max-width:768px) {}
+.buttonLogout {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #444;
+    background: #FFF;
+    border-radius: 30px;
+    transition: 0.2s;
+}
+
+.buttonLogout:hover {
+    opacity: 0.8;
+}
+
+.buttonRound {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to top, #794b02, #5f3e09);
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.buttonRound--small {
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.buttonRound--blue {
+    color: #FFF;
+    background: linear-gradient(to top, #0460D9, #09428c);
+}
+
+.buttonRound--gray {
+    color: #444;
+    background: #CCC;
+}
+
+.buttonRound:hover {
+    opacity: 0.8;
+}
+
+@media only screen and (max-width:768px) {
+    .buttonLogin {
+        margin: 0 0 10px 0;
+    }
+}
+
+/***input関係***/
+.countArea {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.countArea dt {
+    font-size: 14px;
+}
+
+.countArea dd {
+    font-size: 18px;
+    letter-spacing: 0.01rem;
+    margin: 0 0 0 10px;
+}
+
+.inputNum {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+}
+
 
 /***キャプション、コピー等***/
 
@@ -78,6 +273,127 @@ body img {}
 
 @media only screen and (max-width:768px) {}
 
+/***フォーム類***/
+.formItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0 0;
+    padding: 0 0 25px;
+    border-bottom: 1px solid #DDD;
+}
+
+.formItem:last-of-type {
+    border-bottom: none;
+}
+
+.formItem dt {
+    width: 20%;
+    font-size: 16px;
+    color: #09428c;
+    font-weight: bold;
+}
+
+.formItem dd {
+    width: 75%;
+}
+
+.formItem__error {
+    font-size: 12px;
+    margin: 0 0 0 20px;
+    padding: 0 0 5px;
+    color: #B00;
+    border-bottom: 2px solid #B00;
+}
+
+.formItemCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0 0;
+}
+
+.formItemCenter dt {
+    width: 100%;
+    margin: 0 0 10px;
+    text-align: center;
+    color: #444;
+    font-weight: bold;
+}
+
+.formItemCenter dd {
+    width: 100%;
+    text-align: center;
+
+}
+
+.required {
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #FFF;
+    background: #B00;
+    margin: 0 0 0 10px;
+}
+
+.formText {
+    padding: 5px;
+    font-size: 16px;
+    color: #444;
+    border: 1px solid #777;
+}
+
+.formText--s {
+    width: 30%;
+}
+
+.formText--m {
+    width: 60%;
+}
+
+.formText--l {
+    width: 100%;
+}
+
+.formTextArea {
+    height: 300px;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    color: #444;
+    border: 1px solid #777;
+
+}
+
+@media only screen and (max-width:768px) {
+    .formItem {
+        display: block;
+    }
+
+    .formItem dt {
+        width: 100%;
+        margin: 0 0 10px;
+        color: #444;
+    }
+
+    .formItem dd {
+        width: 100%;
+    }
+
+    .formItem__error {
+        margin: 10px 0 0;
+    }
+
+    .formText--s {
+        width: 100%;
+    }
+
+    .formText--m {
+        width: 100%;
+    }
+}
+
+
 /**********************/
 /****** TOPページ *****/
 /**********************/
@@ -94,15 +410,125 @@ body img {}
     justify-content: space-between;
     flex-wrap: nowrap;
     align-items: center;
-    padding: 20px;
-    margin: 0 0 20px;
-    border: 1px solid #000;
+    padding: 15px;
+    margin: 0 0 30px;
+    background: #DDD;
+}
+
+.cardAdmin__title {
+    width: 15%;
+    color: #09428c;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cardAdmin__price {
+    width: 10%;
+    text-align: center;
+}
+
+.cardAdmin__price h4 {
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.cardAdmin__price p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cardAdmin__code {
+    width: 10%;
+    text-align: center;
+}
+
+.cardAdmin__code h4 {
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.cardAdmin__code p {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .cardAdmin__image {
-    width: 20%;
+    width: 15%;
+    text-align: center;
+}
+
+.cardAdmin__image h4 {
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.cardAdmin__caption {
+    width: 24%;
+    margin: 0 1% 0 0;
+}
+
+.cardAdmin__caption h4 {
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.cardAdmin__caption p {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.cardAdmin__button {
+    width: 10%;
 }
 
 .cardAdmin__image img {
-    width: 100%;
+    max-width: 100%;
+}
+
+/* SP */
+@media only screen and (max-width:768px) {
+
+    .cardAdmin {
+        display: block;
+    }
+
+    .cardAdmin__title {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 20px;
+    }
+
+    .cardAdmin__price {
+        width: 100%;
+        margin: 0 0 10px;
+    }
+
+    .cardAdmin__code {
+        width: 100%;
+        margin: 0 0 10px;
+    }
+
+    .cardAdmin__image {
+        width: 100%;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+
+    .cardAdmin__caption {
+        width: 100%;
+        margin: 0 0 30px;
+    }
+
+
+    .cardAdmin__caption h4 {
+        text-align: center;
+    }
+
+    .cardAdmin__button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
 }

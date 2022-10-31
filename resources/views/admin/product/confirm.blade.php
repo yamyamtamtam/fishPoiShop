@@ -1,8 +1,8 @@
 @extends('layouts.adminbase')
 
 @section('content')
-<section>
-    <h2 class="headLineAdminMain">商品を新規登録（確認）</h2>
+<section class="inner">
+    <h2 class="headlineBar mt40 mb20">商品を新規登録（確認）</h2>
     <form action="{{ route('product-store') }}" method="POST">
         @csrf
         @php
@@ -43,12 +43,10 @@
             <dd>{{ $input['description'] }}</dd>
             <input type="hidden" name="description" value="{{ $input['description'] }}">
         </dl>
-        <button type="submit" name="store" class="button button--submit">
-            {{ __('登録') }}
-        </button>
-        <button type="submit" name="back" value="true" class="button button--return">
-            {{ __('戻る') }}
-        </button>
+        <div class="flex-center textC mt60">
+        <button type="submit" name="store" class="buttonRound buttonRound--blue mr10"> {{ __('登録') }}</button>
+        <button type="submit" name="back" value="true" class="buttonRound buttonRound--gray">{{ __('戻る') }}</button>
+        </div>
     </form>
 </section>
 @endsection

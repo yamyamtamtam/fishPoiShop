@@ -1,8 +1,8 @@
 @extends('layouts.adminbase')
 
 @section('content')
-<section>
-    <h2 class="headLineAdminMain">{{ __('ゴミ箱に入っている商品一覧') }}</h2>
+<section class="inner">
+    <h2 class="headlineBar mt40 mb20">{{ __('ゴミ箱に入っている商品一覧') }}</h2>
     @if (count($products) > 0)
         @foreach($products as $product)
             <article class="cardAdmin" id="product{{ $product->id }}">
@@ -33,18 +33,20 @@
                     <h4>{{ __('商品説明') }}</h4>
                     <p>{{ $product->description }}</p>
                 </div>  
-                <a href="#" onclick="deleteReturn('{{ $product->id }}')">
-                    {{ __('元に戻す') }}
-                </a>
-                <form id="return-form{{ $product->id }}" action="{{ route('product-delete-return') . '/' . $product->id }}" method="POST">
-                    @csrf
-                </form>
-                <a href="#" onclick="deleteConfirm('{{ $product->id }}')">
-                    {{ __('完全に削除') }}
-                </a>
-                <form id="delete-form{{ $product->id }}" action="{{ route('product-delete-complete') . '/' . $product->id }}" method="POST">
-                    @csrf
-                </form>
+                <div class="cardAdmin__button">
+                    <a class="buttonRound buttonRound--blue mb10" href="#" onclick="deleteReturn('{{ $product->id }}')">
+                        {{ __('元に戻す') }}
+                    </a>
+                    <form id="return-form{{ $product->id }}" action="{{ route('product-delete-return') . '/' . $product->id }}" method="POST">
+                        @csrf
+                    </form>
+                    <a class="buttonRound buttonRound--gray" href="#" onclick="deleteConfirm('{{ $product->id }}')">
+                        {{ __('完全に削除') }}
+                    </a>
+                    <form id="delete-form{{ $product->id }}" action="{{ route('product-delete-complete') . '/' . $product->id }}" method="POST">
+                        @csrf
+                    </form>
+                </div>
             </article>
         @endforeach
     @endif

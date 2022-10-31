@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}{{ __('管理画面') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,39 +18,36 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/common.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <div id="app">
-        <header class="header">
+<body class="bgAdmin">
+    <header class="header">
+        <div class="inner">
             <h1 class="header__siteTitle"><a href="{{ url('/admin') }}">
-                    {{ __('Laravel練習用ECサイト管理画面') }}
+                {{ config('app.name') }} {{ __('管理画面') }}
                 </a></h1>
             <div class="header__utility">
-                <a class="buttonRound" href="{{ route('admin-register') }}">{{ __('ユーザー新規登録') }}</a>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('ログアウト') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-                <a href="{{ route('product-list') }}">
-                    {{ __('商品一覧') }}
-                </a>
-                <a href="{{ route('product-create') }}">
-                    {{ __('商品登録') }}
-                </a>
+                <a href="{{ route('admin-register') }}">{{ __('ユーザー新規登録') }}</a>
+                <a href="{{ route('product-list') }}">{{ __('商品一覧') }}</a>
+                <a href="{{ route('product-create') }}">{{ __('商品登録') }}</a>
             </div>
-        </header>
-        <main>
-            @yield('content')
-        </main>
-        <footer>
-            <a href="https://yamyamtamtam.tech" target="_blank">My blog.</a>
-            <h6>yamyamtamtam.</h6>
-        </footer>
-    </div>
+        </div>
+        <a class="buttonLogout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            {{ __('ログアウト') }}
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+        </form>
+    </header>
+    <main class="main">
+        @yield('content')
+    </main>
+    <footer class="footer">
+        <h6 class="footer__copy">{{ config('app.name') }} All right Reserved.</h6>
+    </footer>
 </body>
 
 </html>

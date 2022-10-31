@@ -6,6 +6,10 @@
 /*******************************************************/
 body {
     font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Quicksand, '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, , sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: #444;
 }
 
 body p {
@@ -18,8 +22,18 @@ body img {
 
 .inner {
     display: block;
-    width: 100%;
+    width: 95%;
     max-width: 1280px;
+    margin: 0 auto;
+}
+
+.bgSea {
+    min-height: 100vh;
+    background: linear-gradient(to top left, #011126, 30%, #048ABF 60%, #0460D9);
+}
+
+.wrapper {
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -29,13 +43,116 @@ body img {
 /**********************/
 /****** ヘッダー ******/
 /**********************/
+.header {
+    position: relative;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    margin: 0 0 80px;
+}
+
+.header__siteTitle {
+    height: 70px;
+}
+
+.header__siteTitle img {
+    height: 100%;
+}
+
+.header__column {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 0px;
+}
+
+.header__utility {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 0 0;
+}
+
+.wave {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.wave:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/wave.svg);
+
+}
+
 
 /* SP */
-@media only screen and (max-width:768px) {}
+@media only screen and (max-width:768px) {
+    .header__siteTitle {
+        width: 68%;
+    }
+
+    .header__utility {
+        display: block;
+        width: 35%;
+    }
+
+    .wave:after {
+        width: 200%;
+    }
+}
 
 /**********************/
 /****** フッター ******/
 /**********************/
+.footer {
+    text-align: center;
+    margin: 40px 0 0;
+}
+
+.footer__utility {
+    display: flex;
+    justify-content: center;
+}
+
+.footer__utility a {
+    display: flex;
+    justify-content: center;
+    color: #FFF;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.footer__utility a:hover {
+    text-decoration: underline;
+}
+
+.footer__utility a:first-of-type {
+    padding: 0 20px 0 0;
+    border-right: 1px solid #FFF;
+}
+
+
+.footer__utility a:last-of-type {
+    padding: 0 0 0 20px;
+}
+
+.footer__copy {
+    margin: 20px 0 30px;
+    font-weight: normal;
+    color: #FFF;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
 
 /* SP */
 @media only screen and (max-width:768px) {}
@@ -45,17 +162,319 @@ body img {
 /**********************/
 /*タイトル・見出し系（h2,h3,h4）*/
 
+.headlineUnderline {
+    font-size: 26px;
+    font-weight: bold;
+    color: #09428c;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #09428c;
+}
+
+.headlineBarWhite {
+    padding: 10px 0;
+    font-size: 21px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+}
+
 @media only screen and (max-width:768px) {}
 
 /***テキスト***/
+.caption {
+    color: #FFF;
+    font-size: 16px;
+}
 
-@media only screen and (max-width:768px) {}
+.textBgWhite {
+    color: #444;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.textBgBlue {
+    color: #444;
+    background: linear-gradient(to top, rgba(4, 138, 191, 0.6), rgba(9, 96, 217, 0.9));
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.textBg--centerLarge {
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.textBg--centerLarge span {
+    font-size: 38px;
+}
+
+.priceText {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.priceText dt {
+    padding: 5px 30px;
+    font-size: 14px;
+    color: #FFF;
+    background: #09428c;
+    font-weight: bold;
+    text-align: center;
+}
+
+.priceText dd {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 38px;
+    letter-spacing: 0.01rem;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+}
+
+.priceText dd .priceText__strike {
+    font-size: 16px;
+    text-decoration: line-through;
+}
+
+.priceText dd .priceText__sale {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #B00;
+}
+
+.priceText dd .priceText__sale:before {
+    content: 'sale!';
+    font-size: 14px;
+    color: #FFF;
+    background: #B00;
+    padding: 2px 10px 4px;
+    border-radius: 30px;
+    margin: 0 0 0 10px;
+}
+
+.priceText__unit {
+    font-size: 14px;
+    margin: 0 0 0 10px;
+    align-self: center;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.01rem;
+}
+
+@media only screen and (max-width:768px) {
+    .detailsWrap__left {
+        margin: 0 0 20px;
+    }
+
+    .priceText {
+        display: block;
+        margin: 20px 0;
+    }
+
+    .priceText dd {
+        margin: 10px 0 0;
+    }
+
+}
 
 /***画像・動画***/
 
 @media only screen and (max-width:768px) {}
 
 /***ボタン***/
+.cartButton {
+    position: fixed;
+    z-index: 10;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background: #FFF;
+    text-align: center;
+    text-decoration: none;
+    color: #09428c;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    animation: 3s cartButton ease infinite;
+    transition: 0.2s;
+}
+
+@keyframes cartButton {
+    0% {
+        transform: scale(1.0);
+    }
+
+    60% {
+        transform: scale(1.0);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    80% {
+        transform: scale(1.0);
+    }
+
+    90% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+.cartButton:hover {
+    opacity: 0.8;
+}
+
+.cartButton img {
+    width: 40%;
+}
+
+.cartButton span {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 0 0 5px;
+}
+
+.buttonLogin {
+    display: block;
+    margin: 0 10px 0 0;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #FFF;
+    background: #0460D9;
+    border-radius: 30px;
+    transition: 0.2s;
+}
+
+.buttonLogin:hover {
+    opacity: 0.8;
+}
+
+.buttonResister {
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #444;
+    background: #CCC;
+    border-radius: 30px;
+    transition: 0.2s;
+}
+
+.buttonResister:hover {
+    opacity: 0.8;
+}
+
+.buttonLogout {
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #444;
+    background: #CCC;
+    border-radius: 30px;
+    transition: 0.2s;
+}
+
+.buttonLogout:hover {
+    opacity: 0.8;
+}
+
+.buttonRound {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to top, #794b02, #5f3e09);
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.buttonRound--small {
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+
+.buttonRound--blue {
+    color: #FFF;
+    background: linear-gradient(to top, #0460D9, #BBB);
+}
+
+.buttonRound--gray {
+    color: #444;
+    background: #CCC;
+}
+
+.buttonRound:hover {
+    opacity: 0.8;
+}
+
+@media only screen and (max-width:768px) {
+    .buttonLogin {
+        margin: 0 0 10px 0;
+    }
+}
+
+/***input関係***/
+.countArea {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.countArea dt {
+    font-size: 14px;
+}
+
+.countArea dd {
+    font-size: 18px;
+    letter-spacing: 0.01rem;
+    margin: 0 0 0 10px;
+}
+
+.inputNum {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+}
 
 @media only screen and (max-width:768px) {}
 
@@ -75,6 +494,109 @@ body img {
 
 @media only screen and (max-width:768px) {}
 
+/***フォーム類***/
+.formItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 0;
+}
+
+.formItem dt {
+    width: 20%;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.formItem dd {
+    width: 75%;
+}
+
+.formItem__error {
+    font-size: 12px;
+    margin: 0 0 0 20px;
+    padding: 0 0 5px;
+    color: #FFF;
+    border-bottom: 2px solid #B00;
+}
+
+.formItemCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0 0;
+}
+
+.formItemCenter dt {
+    width: 100%;
+    margin: 0 0 10px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.formItemCenter dd {
+    width: 100%;
+    text-align: center;
+
+}
+
+
+.required {
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #FFF;
+    background: #B00;
+    margin: 0 0 0 10px;
+}
+
+.formText {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+}
+
+.formText--s {
+    width: 30%;
+}
+
+.formText--m {
+    width: 60%;
+}
+
+.formText--l {
+    width: 100%;
+}
+
+@media only screen and (max-width:768px) {
+    .formItem {
+        display: block;
+    }
+
+    .formItem dt {
+        width: 100%;
+        margin: 0 0 10px;
+        color: #FFF;
+    }
+
+    .formItem dd {
+        width: 100%;
+    }
+
+    .formItem__error {
+        margin: 10px 0 0;
+    }
+
+    .formText--s {
+        width: 100%;
+    }
+
+    .formText--m {
+        width: 100%;
+    }
+}
+
 /**********************/
 /****** TOPページ *****/
 /**********************/
@@ -87,11 +609,34 @@ body img {
 
 .productCard {
     position: relative;
-    width: 280px;
-    margin: 0 20px 20px 0;
+    width: calc(100% / 3 - 20px);
+    margin: 0 30px 30px 0;
     padding: 20px 20px 50px;
-    border: 1px solid #EEE;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
     box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.productCard:nth-of-type(3n) {
+    margin: 0 0 30px 0;
+}
+
+.productCard__headline {
+    font-size: 21px;
+    font-weight: bold;
+    color: #09428c;
+    padding: 0 0 10px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid #09428c;
+}
+
+.productCard__text {
+    font-size: 14px;
+    color: #444;
+    margin: 20px 0 0;
+    padding: 0 0 30px;
+    letter-spacing: 1px;
+    line-height: 1.4;
 }
 
 .product__button {
@@ -101,16 +646,187 @@ body img {
     left: 0;
     margin: auto;
     width: 80%;
-    padding: 5px 15px;
+    padding: 10px 0;
+    display: block;
     font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
     text-align: center;
-    border: 1px solid #444;
+    color: #FFF;
+    background: linear-gradient(to top, #794b02, #5f3e09);
+    border-radius: 60px;
+    transition: 0.2s;
 }
 
+.product__button:hover {
+    opacity: 0.8;
+}
+
+
 /* SP */
-@media only screen and (max-width:768px) {}
+@media only screen and (max-width:768px) {
+    .productCard {
+        width: calc(100% / 2 - 10px);
+        margin: 0 20px 20px 0;
+    }
+
+    .productCard:nth-of-type(3n) {
+        margin: 0 20px 20px 0;
+    }
+
+    .productCard:nth-of-type(2n) {
+        margin: 0 0 20px 0;
+    }
+
+}
 
 /**********************/
-/****** 中ページ ****/
+/****** 商品詳細ページ ****/
 /**********************/
-/* 共通（中ページ共通パーツ） */
+.detailsWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+
+.detailsWrap__left {
+    width: 50%;
+}
+
+.detailsWrap__right {
+    width: 45%;
+}
+
+.reccomendWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 20px 0 0;
+}
+
+
+/* SP */
+@media only screen and (max-width:768px) {
+    .detailsWrap {
+        display: block;
+        padding: 30px;
+
+    }
+
+    .detailsWrap__left {
+        width: 100%;
+    }
+
+    .detailsWrap__right {
+        width: 100%;
+    }
+}
+
+/**********************/
+/****** カートページ ****/
+/**********************/
+
+.cartCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px 0 0;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.cartCard__headline {
+    width: 25%;
+    font-size: 18px;
+    color: #09428c;
+    font-weight: bold;
+}
+
+.cartCard__img {
+    width: 25%;
+}
+
+.cartCard__img img {
+    max-width: 100%;
+}
+
+.cartCard__price {
+    width: 15%;
+    text-align: center;
+}
+
+.cartCard__price dt {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+.cartCard__price dd {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.cartCard__count {
+    width: 10%;
+    text-align: center;
+}
+
+.cartCard__count dt {
+    font-size: 14px;
+    margin: 0 0 5px;
+}
+
+.cartCard__count dd {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.cartCard__button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 25%;
+}
+
+.cartCard__button a:first-of-type {
+    margin: 0 10px 0 0;
+}
+
+@media only screen and (max-width:768px) {
+    .cartCard {
+        display: block;
+    }
+
+    .cartCard__headline {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cartCard__img {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .cartCard__price {
+        width: 100%;
+    }
+
+    .cartCard__count {
+        width: 100%;
+        margin: 20px 0 40px;
+    }
+
+    .cartCard__button {
+        justify-content: center;
+        width: 100%;
+    }
+
+}

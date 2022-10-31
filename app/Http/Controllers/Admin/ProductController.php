@@ -78,7 +78,7 @@ class ProductController extends Controller
      */
     public function list()
     {
-        $products = $this->product->where('del_flg', 0)->get();
+        $products = $this->product->where('del_flg', 0)->orderBy('id', 'DESC')->get();
         return view('admin.product.list', ['authgroup' => 'admin', 'products' => $products]);
     }
 
@@ -103,9 +103,8 @@ class ProductController extends Controller
             $request->filename = $renamePath;
             Storage::move($filePath, 'public/uploads/' . $renamePath);
         } else {
-            $request->filename = 'noimage.jpg';
+            $request->filename = $request->get('currentImage');
         }
-        $input = $request->all();
         $this->product->updateProduct($request);
         return redirect()->route('product-list')->with('edit', $request->name);
     }
@@ -124,7 +123,7 @@ class ProductController extends Controller
      */
     public function trash()
     {
-        $products = $this->product->where('del_flg', 1)->get();
+        $products = $this->product->where('del_flg', 1)->orderBy('id', 'DESC')->get();
         return view('admin.product.trash', ['authgroup' => 'admin', 'products' => $products]);
     }
 

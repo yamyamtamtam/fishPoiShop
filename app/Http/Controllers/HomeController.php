@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $auth = Auth::user();
-        $products = $this->product->where('del_flg', 0)->get();
+        $products = $this->product->where('del_flg', 0)->orderBy('id', 'DESC')->get();
         $cart = $request->session()->get('cart');
         if (isset($cart)) {
             $cartCount = count($cart);

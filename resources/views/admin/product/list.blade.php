@@ -1,6 +1,7 @@
 @extends('layouts.adminbase')
 
 @section('content')
+<section class="inner">
 @if(session('store'))
     <p class="messageStatus">{{ session('store') }}を登録しました。</p>
 @endif
@@ -13,11 +14,8 @@
 @if(session('return'))
     <p class="messageStatus">{{ session('delete') }}をゴミ箱から元に戻しました。</p>
 @endif
-<section>
-    <h2 class="headLineAdminMain">{{ __('商品一覧') }}</h2>
-    <a href="{{ route('product-trash') }}">
-        {{ __('ごみ箱') }}
-    </a>
+    <h2 class="headlineBar mt40 mb20">{{ __('商品一覧') }}</h2>
+    <a class="textLink mb30" href="{{ route('product-trash') }}"> {{ __('ごみ箱') }}</a>
     @if (count($products) > 0)
         @foreach($products as $product)
             <article class="cardAdmin" id="product{{ $product->id }}">
@@ -44,17 +42,19 @@
                     <h4>{{ __('画像') }}</h4>
                     <img src="{{ asset('/storage/uploads/' . $product->image) }}" alt="{{ $product->name }}の画像">
                 </div>
-                <div class="cardAdmin__cat">
+                <div class="cardAdmin__caption">
                     <h4>{{ __('商品説明') }}</h4>
                     <p>{{ $product->description }}</p>
-                </div>  
-                <a href="{{ route('product-edit-view') . '/' . $product->id }}">{{ __('編集') }}</a>  
-                <a href="#" onclick="deleteConfirm('{{ $product->name }}','{{ $product->id }}')">
-                    {{ __('削除') }}
-                </a>
-                <form id="deleteForm{{ $product->id }}" action="{{ route('product-delete') . '/' . $product->id }}" method="POST">
-                    @csrf
-                </form>
+                </div>
+                <div class="cardAdmin__button">
+                    <a class="buttonRound buttonRound--blue mb10" href="{{ route('product-edit-view') . '/' . $product->id }}">{{ __('編集') }}</a>  
+                    <a class="buttonRound buttonRound--gray" href="#" onclick="deleteConfirm('{{ $product->name }}','{{ $product->id }}')">
+                        {{ __('削除') }}
+                    </a>
+                    <form id="deleteForm{{ $product->id }}" action="{{ route('product-delete') . '/' . $product->id }}" method="POST">
+                        @csrf
+                    </form>
+                </div>
             </article>
         @endforeach
     @endif
