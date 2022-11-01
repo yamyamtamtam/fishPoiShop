@@ -9,7 +9,7 @@
         <article class="detailsWrap">
             @if(isset($content))
                 <div class="detailsWrap__left">
-                    <img src="{{ asset('/storage/uploads/' . $content->image) }}" alt="{{ $content->name }}の画像">        
+                    <img src="{{ asset('/storage/' . $content->image) }}" alt="{{ $content->name }}の画像">        
                 </div>
                 <div class="detailsWrap__right">
                     <h2 class="headlineUnderline">{{ $content->name }}</h2>
@@ -52,7 +52,7 @@
                     @foreach($recommends as $recommend)
                         <article class="productCard">
                             <h2 class="productCard__headline">{{ $recommend->name }}</h2>
-                            <img src="{{ asset('/storage/uploads/' . $recommend->image) }}" alt="{{ $recommend->name }}の画像">
+                            <img src="{{ asset('/storage/' . $recommend->image) }}" alt="{{ $recommend->name }}の画像">
                             <p class="productCard__text">{{ Str::limit($recommend->description, 20, '…') }}</p>
                             <a href="{{ route('detail') . '/' . $recommend->id }}" class="product__button">{{ __('詳細・購入') }}</a>
                         </article>

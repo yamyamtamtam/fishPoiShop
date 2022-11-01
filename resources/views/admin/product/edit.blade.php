@@ -51,7 +51,7 @@
                 @endforeach
                 @endif
                 <p class="caption mt30">現在の画像</p>
-                <img src="{{ asset('/storage/uploads/' . $product->image) }}" alt="">
+                <img src="{{ asset('/storage/' . $product->image) }}" alt="">
                 <input type="hidden" name="currentImage" value="{{ $product->image }}">
             </dd>
         </dl>

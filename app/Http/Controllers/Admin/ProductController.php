@@ -65,9 +65,9 @@ class ProductController extends Controller
         if ($file === 'storage/default/noimage.jpg') {
             $request->image = 'noimage.jpg';
         } else {
-            $request->image = date('Ymd') . str_replace('storage/uploads/temp/', '', $file);
+            $request->image = 'uploads/' . date('Ymd') . '/' . str_replace('storage/uploads/temp/', '', $file);
         }
-        $movedPath = 'public/uploads/' . $request->image;
+        $movedPath = 'public/' . $request->image;
         Storage::move($filePath, $movedPath);
         $this->product->insertProduct($request);
         return redirect()->route('product-list')->with('store', $request->name);
@@ -99,9 +99,9 @@ class ProductController extends Controller
         $file = $request->file('image');
         if (isset($file)) {
             $filePath = $file->store('public/uploads');
-            $renamePath = date('Ymd') . str_replace('public/uploads/', '', $filePath);
+            $renamePath = 'uploads/' . date('Ymd') . str_replace('public/uploads/', '', $filePath);
             $request->filename = $renamePath;
-            Storage::move($filePath, 'public/uploads/' . $renamePath);
+            Storage::move($filePath, 'public/' . $renamePath);
         } else {
             $request->filename = $request->get('currentImage');
         }

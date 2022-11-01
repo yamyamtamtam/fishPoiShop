@@ -17,13 +17,25 @@ class ProductsSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
-                'name' => 'テスト',
-                'price' => 1000,
-                'sale' => '500',
+                'name' => '金魚ポイ',
+                'price' => 2000,
+                'sale' => NULL,
                 'code' => 'A0001',
-                'category_id' => 1,
-                'image' => asset('/storage/app/public24450752_s.jpg'),
-                'description' => 'テスト',
+                'category_id' => NULL,
+                'image' => 'default/sampleGoldFish.png',
+                'description' => '（これはサンプルの商品です。購入しても商品は届きません。）<br>金魚の形のポイです。ポイを回す様子はまるで本物の金魚が泳ぐよう。',
+                'del_flg' => 0,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'くらげポイ',
+                'price' => 1800,
+                'sale' => 1400,
+                'code' => 'A0002',
+                'category_id' => NULL,
+                'image' => 'default/sampleJellyFish.png',
+                'description' => '（これはサンプルの商品です。購入しても商品は届きません。）<br>くらげの形のポイです。透明感のあるくらげのようなポイを幻想的に回しましょう。',
                 'del_flg' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

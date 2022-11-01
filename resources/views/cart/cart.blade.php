@@ -15,7 +15,7 @@
                     <article class="cartCard">
                         <h2 class="cartCard__headline">{{ $item['name'] }}</h2>
                         <div class="cartCard__img">
-                            <img src="{{ asset('/storage/uploads/') . '/' . $item['image'] }}" alt="{{ $item['name'] }}の画像">
+                            <img src="{{ asset('/storage/') . '/' . $item['image'] }}" alt="{{ $item['name'] }}の画像">
                         </div>
                         <dl class="cartCard__price">
                             <dt>価格(税込)</dt>

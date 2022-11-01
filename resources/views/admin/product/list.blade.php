@@ -40,7 +40,7 @@
                 -->
                 <div class="cardAdmin__image">
                     <h4>{{ __('画像') }}</h4>
-                    <img src="{{ asset('/storage/uploads/' . $product->image) }}" alt="{{ $product->name }}の画像">
+                    <img src="{{ asset('/storage/' . $product->image) }}" alt="{{ $product->name }}の画像">
                 </div>
                 <div class="cardAdmin__caption">
                     <h4>{{ __('商品説明') }}</h4>
