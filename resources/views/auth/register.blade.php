@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends(@isset($authgroup) ? 'layouts.adminbase' : 'layouts.app')
 
 @section('content')
 <div class="inner">
     @isset($authgroup)
-        <h2 class="headlineBarWhite">{{ __('管理者ユーザー登録') }}</h2>
+        <h2 class="headlineBar mt40 mb20">{{ __('管理者ユーザー登録') }}</h2>
     @else
         <h2 class="headlineBarWhite">{{ __('ユーザー登録') }}</h2>
     @endif

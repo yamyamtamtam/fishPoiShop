@@ -40,7 +40,7 @@
                     </form>
                 </div>
             @else
-                <p class="caption">{{ __('商品はありません。') }}</p>
+                <p class="description">{{ __('商品はありません。') }}</p>
             @endif
         </article>
         <section class="recommend mt60">

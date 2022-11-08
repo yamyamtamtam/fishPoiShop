@@ -5,7 +5,7 @@
 /******** 共通（body,inner,pタグ,imgタグの基本設定） ********/
 /*******************************************************/
 body {
-    font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Quicksand, '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, , sans-serif;
+    font-family: "ヒラギノ丸ゴ Pro W4", "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO";
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -44,7 +44,8 @@ body img {
 /****** ヘッダー ******/
 /**********************/
 .header {
-    position: relative;
+    position: fixed;
+    z-index: 10;
     width: 100%;
     background: rgba(255, 255, 255, 0.85);
     margin: 0 0 80px;
@@ -100,13 +101,20 @@ body img {
         width: 68%;
     }
 
+
     .header__utility {
         display: block;
         width: 35%;
+        margin: 0;
+    }
+
+    .wave {
+        height: 40px;
+        bottom: -40px;
     }
 
     .wave:after {
-        width: 200%;
+        width: 150%;
     }
 }
 
@@ -199,7 +207,7 @@ body img {
 
 .textBgBlue {
     color: #444;
-    background: linear-gradient(to top, rgba(4, 138, 191, 0.6), rgba(9, 96, 217, 0.9));
+    background: linear-gradient(to top, rgba(9, 66, 140, 0.6), rgba(9, 66, 140, 0.9));
     font-size: 16px;
     margin: 20px 0;
     padding: 20px;
@@ -358,6 +366,46 @@ body img {
     padding: 0 0 0 5px;
 }
 
+.buttonAbout {
+    display: block;
+    margin: 0 10px 0 0;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #FFF;
+    background: #794b02;
+    border-radius: 30px;
+    transition: 0.2s;
+}
+
+@media only screen and (max-width:768px) {
+    .buttonAbout {
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 40%;
+        display: block;
+        margin: 0;
+        padding: 20px 5px;
+        writing-mode: vertical-rl;
+        font-size: 12px;
+        text-decoration: none;
+        text-align: center;
+        color: #FFF;
+        background: #794b02;
+        border-radius: 0 10px 10px 0;
+        transition: 0.2s;
+    }
+
+    .buttonAbout:after {
+        content: "▼";
+        padding: 10px 0 0;
+        font-size: 10px;
+    }
+}
+
 .buttonLogin {
     display: block;
     margin: 0 10px 0 0;
@@ -367,13 +415,20 @@ body img {
     text-decoration: none;
     text-align: center;
     color: #FFF;
-    background: #0460D9;
+    background: #09428c;
     border-radius: 30px;
     transition: 0.2s;
 }
 
 .buttonLogin:hover {
     opacity: 0.8;
+}
+
+@media only screen and (max-width:768px) {
+    .buttonLogin {
+        margin: 0 0 10px 0;
+        font-size: 12px;
+    }
 }
 
 .buttonResister {
@@ -393,9 +448,15 @@ body img {
     opacity: 0.8;
 }
 
+@media only screen and (max-width:768px) {
+    .buttonResister {
+        font-size: 12px;
+    }
+}
+
 .buttonLogout {
     display: block;
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: normal;
     text-decoration: none;
@@ -408,6 +469,12 @@ body img {
 
 .buttonLogout:hover {
     opacity: 0.8;
+}
+
+@media only screen and (max-width:768px) {
+    .buttonLogout {
+        font-size: 12px;
+    }
 }
 
 .buttonRound {
@@ -444,12 +511,6 @@ body img {
 
 .buttonRound:hover {
     opacity: 0.8;
-}
-
-@media only screen and (max-width:768px) {
-    .buttonLogin {
-        margin: 0 0 10px 0;
-    }
 }
 
 /***input関係***/

@@ -11,7 +11,6 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,12 +23,13 @@
 </head>
 
 <body class="bgSea">
-        <header class="header">
+        <header id="js-headerAdjust" class="header">
             <div class="inner header__column">
             <h1 class="header__siteTitle"><a href="{{ url('/') }}">
                 <img src="{{ asset('/images/logo.svg') }}" alt="{{ config('app.name') }}">
             </a></h1>
             <div class="header__utility">
+                <a class="buttonAbout" href="{{ route('about') }}">{{ __('ポイってなに？') }}</a>
                 @guest
                     @if(!Auth::check() && (!isset($authgroup) || !Auth::guard($authgroup)->check()))
                         @if (Route::has('login'))
@@ -57,15 +57,15 @@
                 @endguest
             </div>
         </div>
-        <div class="wave"></div>
+        <div id="js-waveAdjust" class="wave"></div>
         </header>
-        <main>
+        <main id="js-adjustInsert">
             @yield('content')
         </main>
         <footer class="footer">
             <nav class="footer__utility">
-                <a href="#">プライバシーポリシー</a>
-                <a href="#">特定商取引法に基づく表記</a>
+                <a href="{{ route('privacy') }}">プライバシーポリシー</a>
+                <a href="{{ route('notation') }}">特定商取引法に基づく表記</a>
             </nav>
             <h6 class="footer__copy">{{ config('app.name') }} All right Reserved.</h6>
         </footer>
@@ -81,6 +81,9 @@
             bubbleFunc:() => `hsla(${200 + Math.random() * 200}, 100%, 65%, .1)`,
             bubbles:30
         });
+        const headerHeight = document.getElementById('js-headerAdjust').offsetHeight + document.getElementById('js-waveAdjust').offsetHeight;
+        const insertEl = document.getElementById('js-adjustInsert');
+        insertEl.style.paddingTop = headerHeight + 'px';
         </script>
 </body>
 

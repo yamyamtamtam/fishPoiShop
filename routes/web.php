@@ -27,6 +27,9 @@ Route::post('/cart/delivery', [App\Http\Controllers\CartController::class, 'deli
 Route::post('/cart/confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart-confirm');
 Route::post('/cart/thanks', [App\Http\Controllers\CartController::class, 'thanks'])->name('cart-thanks');
 
+Route::view('/about', 'about')->name('about');
+Route::view('/privacy', 'privacy')->name('privacy');
+Route::view('/notation', 'notation')->name('notation');
 
 Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
 Route::get('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm']);
@@ -44,4 +47,4 @@ Route::post('/admin/product/delete/{id?}', [App\Http\Controllers\Admin\ProductCo
 Route::post('/admin/product/delete/complete/{id?}', [App\Http\Controllers\Admin\ProductController::class, 'deleteComplete'])->name('product-delete-complete')->middleware('auth:admin');
 Route::post('/admin/product/delete/return/{id?}', [App\Http\Controllers\Admin\ProductController::class, 'deleteReturn'])->name('product-delete-return')->middleware('auth:admin');
 
-Route::view('/admin', 'admin.home')->middleware('auth:admin')->name('admin-home');
+Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('auth:admin')->name('admin-home');
