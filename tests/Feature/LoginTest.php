@@ -9,12 +9,8 @@ use App\Models\User;
 
 class LoginTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     protected $user;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -33,11 +29,21 @@ class LoginTest extends TestCase
         $this->assertAuthenticatedAs($this->user);
     }
 
-    public function test_login_faliled()
+    public function test_login_faliled_password()
     {
         $response = $this->post('/login', [
             'email' => $this->user->email,
             'password' => 'test'
+        ]);
+        $response->assertStatus(302);
+        $this->assertGuest();
+    }
+
+    public function test_login_faliled_email()
+    {
+        $response = $this->post('/login', [
+            'email' => 'test@gmail.com',
+            'password' => 'testtest'
         ]);
         $response->assertStatus(302);
         $this->assertGuest();
@@ -50,5 +56,13 @@ class LoginTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('/');
         $response = $this->assertGuest();
+    }
+
+    public function test_remember_password()
+    {
+    }
+
+    public function test_forgot_password()
+    {
     }
 }

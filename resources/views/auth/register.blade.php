@@ -32,7 +32,7 @@
             </dd>
         </dl>
         <dl class="formItemCenter">
-            <dt for="email">{{ __('パスワード') }}</dt>
+            <dt for="passowrd">{{ __('パスワード') }}</dt>
             <dd>
                 <input class="formText formText--m" type="password" name="password" value="{{ old('password') }}" required autocomplete="new-password">
                 @error('password')
@@ -41,7 +41,7 @@
             </dd>
         </dl>
         <dl class="formItemCenter">
-            <dt for="email">{{ __('パスワード再入力') }}</dt>
+            <dt for="password_confirmation">{{ __('パスワード再入力') }}</dt>
             <dd>
                 <input class="formText formText--m" type="password" name="password_confirmation" required autocomplete="new-password">
             </dd>
