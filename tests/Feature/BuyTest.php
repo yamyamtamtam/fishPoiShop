@@ -9,7 +9,7 @@ use App\Models\User;
 
 class BuyTest extends TestCase
 {
-    public function test_buy_success_straight()
+    public function test_buy_success_straight_in_count_change()
     {
         parent::setUp();
         $user = User::factory(User::class)->create([
@@ -104,5 +104,33 @@ class BuyTest extends TestCase
         ]);
         $response->assertStatus(200);
         //実際にメールを送るテストを書かないとテストになっていないのでは？要検討
+    }
+    public function test_buy_reduce_item_from_cart()
+    {
+        /**先にSeederを動かしてサンプル商品は登録しておく */
+        $response = $this->get('/detail/1');
+        $response->assertStatus(200);
+        $response = $this->post('/detail/add/1', [
+            'num' => 3
+        ]);
+        $response->assertStatus(302);
+        $response->assertRedirect('/');
+        $cartArray[1] = [
+            'name' => '金魚ポイ',
+            'currentPrice' => 2000,
+            'image' => 'default/sampleGoldFish.png',
+            'num' => 3
+        ];
+        $response = $this->session(['cart' => $cartArray]);
+        $response = $this->post('/cart/delete/1');
+        $response->assertStatus(302);
+        $response->assertRedirect('/cart');
+        $response = $this->get('/cart');
+        $response->assertStatus(200);
+    }
+
+    public function test_buy_varidation()
+    {
+        //後でテスト書く
     }
 }

@@ -22,6 +22,7 @@ Route::post('/detail/add/{id?}', [App\Http\Controllers\DetailController::class, 
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'list'])->name('cart');
 Route::post('/cart/delete/{id?}', [App\Http\Controllers\CartController::class, 'delete'])->name('cart-delete');
+Route::get('/cart/delivery', [App\Http\Controllers\CartController::class, 'delivery'])->name('cart-delivery');
 Route::post('/cart/delivery', [App\Http\Controllers\CartController::class, 'delivery'])->name('cart-delivery');
 Route::post('/cart/confirm', [App\Http\Controllers\CartController::class, 'confirm'])->name('cart-confirm');
 Route::post('/cart/thanks', [App\Http\Controllers\CartController::class, 'thanks'])->name('cart-thanks');
