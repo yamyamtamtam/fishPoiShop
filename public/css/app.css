@@ -178,6 +178,11 @@ body img {
     border-bottom: 1px solid #09428c;
 }
 
+.headlineUnderline--white {
+    color: #FFF;
+    border-bottom: 1px solid #FFF;
+}
+
 .headlineBarWhite {
     padding: 10px 0;
     font-size: 21px;
@@ -191,6 +196,14 @@ body img {
 @media only screen and (max-width:768px) {}
 
 /***テキスト***/
+
+.textSmall {
+    color: #FFF;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
 .caption {
     color: #FFF;
     font-size: 16px;
@@ -544,8 +557,66 @@ body img {
 @media only screen and (max-width:768px) {}
 
 /***リスト系***/
+.numberList {
+    list-style-type: decimal;
+    list-style-position: inherit;
+    padding: 0 0 0 20px;
+}
 
-@media only screen and (max-width:768px) {}
+.numberList li {
+    margin: 0 0 15px 15px;
+    color: #FFF;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.numberList__noNum {
+    list-style-type: none;
+}
+
+.tableList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.tableList:last-of-type dt,
+.tableList:last-of-type dd {
+    border-bottom: none;
+}
+
+.tableList dt {
+    width: 20%;
+    padding: 15px;
+    background: #09428c;
+    border-bottom: 1px solid #FFF;
+    color: #FFF;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+.tableList dd {
+    width: 80%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid #09428c;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+
+@media only screen and (max-width:768px) {
+    .tableList dt {
+        width: 100%;
+    }
+
+    .tableList dd {
+        width: 100%;
+    }
+
+}
 
 /***囲い系***/
 
