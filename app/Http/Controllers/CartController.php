@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Mail;
@@ -23,6 +24,7 @@ class CartController extends Controller
     public function __construct()
     {
         $this->product = new Product;
+        $this->order = new Order;
     }
 
     public function list(Request $request)
@@ -95,6 +97,17 @@ class CartController extends Controller
         }
         $cartPost = $request->all();
         $newCartArray = $this->cartArrayRebuild($cartPost);
+
+        $this->order->insertOrder(
+            $newCartArray,
+            Auth::id(),
+            $cartPost['deliveryName'],
+            $cartPost['deliveryPostal'],
+            $cartPost['deliveryAddress'],
+            $cartPost['deliveryTel'],
+            $cartPost['deliveryMail']
+        );
+
         Mail::to($cartPost['deliveryMail'])->send(
             new mailSend(
                 'returnMail',
@@ -130,6 +143,10 @@ class CartController extends Controller
      * {'image{id}'}: 画像名
      * {'currentPrice{id}'}: 購入時の価格
      * total: 合計金額
+     * 
+     * return
+     * [商品のid] => { .... },[],....
+     * 
      */
     private function cartArrayRebuild(array $array)
     {

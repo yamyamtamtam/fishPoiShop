@@ -33,6 +33,7 @@
                 <a href="{{ route('admin-register') }}">{{ __('ユーザー新規登録') }}</a>
                 <a href="{{ route('product-list') }}">{{ __('商品一覧') }}</a>
                 <a href="{{ route('product-create') }}">{{ __('商品登録') }}</a>
+                <a href="{{ route('order-list') }}">{{ __('受注一覧') }}</a>
             </div>
         </div>
         <a class="buttonLogout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

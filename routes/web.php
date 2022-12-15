@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
@@ -46,5 +35,10 @@ Route::post('/admin/product/edit/{id?}', [App\Http\Controllers\Admin\ProductCont
 Route::post('/admin/product/delete/{id?}', [App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product-delete')->middleware('auth:admin');
 Route::post('/admin/product/delete/complete/{id?}', [App\Http\Controllers\Admin\ProductController::class, 'deleteComplete'])->name('product-delete-complete')->middleware('auth:admin');
 Route::post('/admin/product/delete/return/{id?}', [App\Http\Controllers\Admin\ProductController::class, 'deleteReturn'])->name('product-delete-return')->middleware('auth:admin');
+
+Route::get('/admin/order/list/', [App\Http\Controllers\Admin\OrderController::class, 'list'])->name('order-list')->middleware('auth:admin');
+Route::post('/admin/order/status/{id?}', [App\Http\Controllers\Admin\OrderController::class, 'status'])->name('order-status')->middleware('auth:admin');
+Route::post('/admin/order/cancel/{id?}', [App\Http\Controllers\Admin\OrderController::class, 'cancel'])->name('order-cancel')->middleware('auth:admin');
+
 
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('auth:admin')->name('admin-home');

@@ -69,6 +69,7 @@ class BuyTest extends TestCase
         ]);
         $response->assertStatus(200);
         $response->assertSee('6800');
+        /*確認画面*/
         $response = $this->post('/cart/confirm', [
             'name1' => '金魚ポイ',
             'currentPrice1' => 2000,
@@ -86,6 +87,7 @@ class BuyTest extends TestCase
             'deliveryMail' => '4leafclover1214@gmail.com'
         ]);
         $response->assertStatus(200);
+        /*登録・メール送信・thanks画面*/
         $response = $this->post('/cart/thanks', [
             'name1' => '金魚ポイ',
             'currentPrice1' => 2000,

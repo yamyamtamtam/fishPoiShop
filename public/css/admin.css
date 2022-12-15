@@ -408,11 +408,15 @@ body img {
 .cardAdmin {
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     padding: 15px;
     margin: 0 0 30px;
     background: #DDD;
+}
+
+.cardAdmin--order {
+    align-items: stretch;
 }
 
 .cardAdmin__title {
@@ -481,9 +485,93 @@ body img {
     width: 10%;
 }
 
+.cardAdmin__button--flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0 0;
+}
+
 .cardAdmin__image img {
     max-width: 100%;
 }
+
+.cardAdmin--yet .cardAdmin__status {
+    color: #F44;
+}
+
+.cardAdmin--send .cardAdmin__status {
+    color: #599;
+}
+
+.cardAdmin--end div {
+    background: #DDD;
+}
+
+.cardAdmin--cancel div {
+    background: #DDD;
+}
+
+.cardAdmin__id {
+    width: 10%;
+    padding: 10px;
+    color: #09428c;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    background: #FFF;
+}
+
+.cardAdmin__status {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cardAdmin__user {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #FFF;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cardAdmin__user h4 {
+    margin: 0 0 5px;
+}
+
+.cardAdmin__product {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #FFF;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cardAdmin__product h4 {
+    margin: 0 0 5px;
+}
+
+.cardAdmin__delivery {
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #FFF;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cardAdmin__delivery h4 {
+    margin: 0 0 5px;
+}
+
+
 
 /* SP */
 @media only screen and (max-width:768px) {
@@ -509,9 +597,19 @@ body img {
     }
 
     .cardAdmin__image {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         width: 100%;
         margin: 0 0 10px;
-        text-align: center;
+    }
+
+    .cardAdmin__image h4 {
+        width: 100%;
+    }
+
+    .cardAdmin__image img {
+        width: 60%;
     }
 
     .cardAdmin__caption {
@@ -529,6 +627,27 @@ body img {
         display: flex;
         justify-content: center;
         align-items: flex-start;
+    }
+
+    .cardAdmin--order {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .cardAdmin__id {
+        width: 25%;
+    }
+
+    .cardAdmin__status {
+        width: 75%;
+    }
+
+    .cardAdmin__product {
+        width: 50%;
+    }
+
+    .cardAdmin__delivery {
+        width: 100%;
     }
 
 }
